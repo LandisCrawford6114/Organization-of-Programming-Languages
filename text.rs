@@ -1,17 +1,15 @@
 fn main() 
 {
     let mut b = true;
-    let yes: String = "yes".to_string();
-    let no: String = "no".to_string();
     while b{
         println!("Would you like to play my game?");
         let a: String = input().to_string();
-        if a == yes
+        if a == "yes".to_string()
         {
             println!("Congrats you win");
             b = false;
         }
-        else if a == no
+        else if a == "no".to_string()
         {
             println!("What a dweeb, you lose");
             b = false;
