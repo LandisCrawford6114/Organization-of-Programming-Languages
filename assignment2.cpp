@@ -103,7 +103,10 @@ int main ()
     list<string> test = eClosure("n1",arr,lineCount);
 
     for (auto v : test)
-        cout << v << "\n";
+        cout << v << ",";
 
+    cout<<"\b";
+    cout<<" ";
+    cout<<"\n";
     return 0;
 }
