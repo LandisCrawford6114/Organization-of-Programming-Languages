@@ -100,7 +100,7 @@ int main ()
 		cout<<endl;
 	}
 
-    list<string> test = eClosure("n1",arr,lineCount);
+    list<string> test = eClosure("n4",arr,lineCount);
 
     for (auto v : test)
         cout << v << ",";
