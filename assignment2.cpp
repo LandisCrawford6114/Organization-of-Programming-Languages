@@ -2,9 +2,12 @@
 #include <fstream>
 #include <string>
 #include <list>
+#include <algorithm>
 
 
 using namespace std;
+
+
 
 void addLink(string line, int lineNumber, string arr[][3])
 {
@@ -19,11 +22,47 @@ void addLink(string line, int lineNumber, string arr[][3])
     arr[lineNumber][2] = link;
 }
 
-list<string> eClosure(string node, string arr[][3])
+list<string> eClosure2(list<string> nodes, string arr[][3], int rows)
 {
-    list<string> connections;
-    
+    list<string> oldNodes = nodes;
+    for (auto it = oldNodes.begin(); it != oldNodes.end(); ++it)
+    {
+        string currentNode = *it;
+
+        for(int j = 0; j < rows; j++)
+        {
+            if(arr[j][0] == currentNode && arr[j][2] == "ε" && find(begin(nodes), end(nodes), arr[j][1]) == end(nodes))
+            {
+                nodes.push_back(arr[j][1]);
+            }
+        }
+    }
+
+    if(oldNodes == nodes)
+    {
+        return nodes;
+    }
+    else
+    {
+        return eClosure2(nodes,arr,rows);
+    }
 }
+
+list<string> eClosure(string node, string arr[][3], int rows)
+{
+    list<string> nodes;
+    nodes.push_back(node);
+    for(int i = 0; i < rows;i++)
+    {
+        if(arr[i][0] == node && arr[i][2] == "ε")
+        {
+            nodes.push_back(arr[i][1]);
+        }
+    }
+    return eClosure2(nodes,arr,rows);
+}
+
+
 
 int main () 
 {
@@ -60,6 +99,11 @@ int main ()
 		}
 		cout<<endl;
 	}
+
+    list<string> test = eClosure("n1",arr,lineCount);
+
+    for (auto v : test)
+        cout << v << "\n";
 
     return 0;
 }
