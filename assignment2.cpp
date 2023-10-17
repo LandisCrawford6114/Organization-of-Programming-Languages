@@ -4,10 +4,7 @@
 #include <list>
 #include <algorithm>
 
-
 using namespace std;
-
-
 
 void addLink(string line, int lineNumber, string arr[][3])
 {
@@ -62,7 +59,32 @@ list<string> eClosure(string node, string arr[][3], int rows)
     return eClosure2(nodes,arr,rows);
 }
 
+void DFA(string arr[][3], int rows)
+{
+    list<int> nodes;
+    for(int i = 0; i < rows; i++)
+    {
+        if(find(begin(nodes), end(nodes), stoi(arr[i][0])) == end(nodes))
+        {
+            nodes.push_back(stoi(arr[i][0]));
+        }
+    }
+    nodes.sort();
 
+    while(nodes.size() != 0)
+    {
+        int front = nodes.front();
+        list<string> eclos= eClosure(to_string(front),arr,rows);
+        for(auto v : eclos)
+        {
+            cout << v << ",";
+            nodes.remove(stoi(v));
+        }
+        cout<<"\b";
+        cout<<" ";
+        cout<<"\n";
+    }
+}
 
 int main () 
 {
@@ -91,6 +113,8 @@ int main ()
         lineList.pop_front();
     }
 
+    //output part 1
+    cout << "Part 1:\n";
     for(int i=0;i<lineCount;i++)
 	{
 		for(int j=0;j<3;j++)
@@ -100,13 +124,20 @@ int main ()
 		cout<<endl;
 	}
 
-    list<string> test = eClosure("n4",arr,lineCount);
+    //test and output part 2
+    list<string> eclos = eClosure("2",arr,lineCount);
 
-    for (auto v : test)
+    cout << "Part 2:\n";
+    for (auto v : eclos)
         cout << v << ",";
 
     cout<<"\b";
     cout<<" ";
     cout<<"\n";
+
+    //test part 3
+    cout << "Part 3:\n";
+    DFA(arr,lineCount);
+
     return 0;
 }
