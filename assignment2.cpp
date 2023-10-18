@@ -71,8 +71,11 @@ void DFA(string arr[][3], int rows)
     }
     nodes.sort();
 
+    int d = 0;
     while(nodes.size() != 0)
     {
+        cout << "d" << d << ": ";
+        d++;
         int front = nodes.front();
         list<string> eclos= eClosure(to_string(front),arr,rows);
         for(auto v : eclos)
