@@ -74,6 +74,8 @@ void DFA(string arr[][3], int rows)
     int d = 0;
     while(nodes.size() != 0)
     {
+        list<string> stupid;
+        list<string> stupid2;
         cout << "d" << d << ": ";
         d++;
         int front = nodes.front();
@@ -82,6 +84,24 @@ void DFA(string arr[][3], int rows)
         {
             cout << v << ",";
             nodes.remove(stoi(v));
+
+            for(int i = 0; i < rows; i++)
+            {
+                if(arr[i][0] == v && arr[i][2] != "ε")
+                {
+                    stupid.push_back(arr[i][1]);
+                    stupid2.push_back(arr[i][2]);
+                }
+            }
+        }
+        cout<<"\b";
+        cout<<" ";
+        int stupid3 = stupid.size();
+        for(int i = 0; i < stupid3;i++)
+        {
+            cout << " " << stupid2.front() << " -> " << stupid.front() << ",";
+            stupid.pop_front();
+            stupid2.pop_front();
         }
         cout<<"\b";
         cout<<" ";
