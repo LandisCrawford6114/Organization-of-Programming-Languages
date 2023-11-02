@@ -59,6 +59,16 @@ void parse(string input, string rules[][3], char table[][7], int tableLineCount,
             cout << printing;
             print.pop_front();
         }
+        cout << "\n";
+        print = inputs;
+        cout << c;
+        for(int i = 0; i <inputs.size(); i++)
+        {
+            char printing = print.front();
+            cout << printing;
+            print.pop_front();
+        }
+        cout << "\n";
         if(x == c)
         {
             stack.pop_front();
@@ -71,6 +81,8 @@ void parse(string input, string rules[][3], char table[][7], int tableLineCount,
             {
                 return;
             }
+            cout << "match " << x;
+            cout << "\n";
         }
         else
         {
@@ -110,8 +122,11 @@ void parse(string input, string rules[][3], char table[][7], int tableLineCount,
                         }
                     }
                 }
+                cout << "run rule " << ruleNumber;
+                cout << "\n";
             }
         }
+        cout << "\n";
     }
 }
 
