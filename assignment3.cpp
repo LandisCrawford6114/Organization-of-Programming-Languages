@@ -101,7 +101,7 @@ void parse(string input, string rules[][3], char table[][7], int tableLineCount,
                     {
                         for(int j = rules[i][2].size()-1; j >= 0 ; j--)
                         {
-                            if(rules[i][2].at(j) != 'w')
+                            if(rules[i][2] != "ε")
                             {
                                 char adding = rules[i][2].at(j);
                                 stack.push_front(adding);
