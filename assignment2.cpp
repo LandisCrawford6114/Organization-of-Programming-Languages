@@ -148,7 +148,7 @@ int main ()
 	}
 
     //test and output part 2
-    list<string> eclos = eClosure("2",arr,lineCount);
+    list<string> eclos = eClosure("1",arr,lineCount);
 
     cout << "Part 2:\n";
     for (auto v : eclos)
