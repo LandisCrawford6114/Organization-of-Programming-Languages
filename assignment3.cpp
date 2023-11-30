@@ -79,6 +79,7 @@ void parse(string input, string rules[][3], char table[][7], int tableLineCount,
             }
             else
             {
+                cout << "match $ \n";
                 return;
             }
             cout << "match " << x;
